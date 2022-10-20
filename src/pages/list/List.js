@@ -30,11 +30,6 @@ const List = ({
     setSelected(positionInfo[0].label);
   }, [listUp]);
 
-  //test
-  const stateClick = (key, value) => {
-    setState({ [key]: value });
-  };
-
   const phoneChange = (e) => {
     setPhoneNum(e.target.value);
     console.log("phone", phoneNum);
@@ -49,7 +44,7 @@ const List = ({
   const selectChange = (e) => {
     setSelected(e.target.value);
     setPositions(false);
-    // setList([{ position: e.target.value }]);
+    setList([{ position: e.target.value }]);
     console.log(list);
   };
 
@@ -70,7 +65,6 @@ const List = ({
         selected={selected}
         list={list}
       />
-      <button onClick={(e) => stateClick("bool", !state.bool)}>버튼</button>
     </>
   );
 };

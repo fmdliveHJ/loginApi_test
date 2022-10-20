@@ -21,7 +21,6 @@ const FormInfo = ({
               );
             })}
           </select>
-
           <input type="number" value={phone} onChange={phoneChange} />
         </div>
       </form>

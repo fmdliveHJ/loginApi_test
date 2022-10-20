@@ -52,7 +52,6 @@ const Mainview = () => {
       }
     });
   };
-
   const idChange = (e) => {
     setLoginId(e.target.value);
     console.log("loginId", loginId);
