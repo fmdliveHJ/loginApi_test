@@ -13,18 +13,13 @@ const Mainview = () => {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(false);
   const [duplicate, setDuplicate] = useState(false);
-
-  const [phoneNum, setPhoneNum] = useState([]);
-  const [positions, setPositions] = useState(true);
   const navigate = useNavigate();
-
   const [positionInfo, setPositionInfo] = useState([
-    { value: "1", position: "연구원" },
-    { value: "2", position: "주임연구원" },
-    { value: "3", position: "선임연구원" },
+    { value: "0", position: "연구원" },
+    { value: "1", position: "주임연구원" },
+    { value: "2", position: "선임연구원" },
   ]);
 
-  const [selected, setSelected] = useState(positionInfo[0].label);
   const [list, setList] = useState([
     { name: "배인섭", position: "주임연구원", phone: "01011111111", id: 1 },
     { name: "도창록", position: "연구원", phone: "01022222222", id: 2 },
@@ -57,12 +52,12 @@ const Mainview = () => {
     console.log("loginId", loginId);
 
     const duplicateUrl = `${severApi}:9002/users/duplicate/${loginId}`;
-    const body = {
-      id: loginId,
-      password: password,
-    };
+    // const body = {
+    //   id: loginId,
+    //   password: password,
+    // };
 
-    axios.get(duplicateUrl, body).then((duplicate) => {
+    axios.get(duplicateUrl).then((duplicate) => {
       console.log("duplicate", duplicate);
       if (duplicate.data.status === true) {
         setDuplicate(true);
@@ -85,18 +80,13 @@ const Mainview = () => {
             <Routes>
               <Route index path="/home" element={<Home />} />
               <Route
-                path="/List"
+                path="/List/:id"
                 element={
                   <List
                     list={list}
                     setList={setList}
-                    selected={selected}
-                    setSelected={setSelected}
-                    positions={positions}
-                    phoneNum={phoneNum}
-                    setPhoneNum={setPhoneNum}
-                    setPositions={setPositions}
                     positionInfo={positionInfo}
+                    setPositionInfo={setPositionInfo}
                   />
                 }
               />

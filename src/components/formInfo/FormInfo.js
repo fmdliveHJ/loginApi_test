@@ -7,6 +7,7 @@ const FormInfo = ({
   selectChange,
   selected,
   list,
+  setList,
 }) => {
   return (
     <div>
@@ -21,7 +22,11 @@ const FormInfo = ({
               );
             })}
           </select>
-          <input type="number" value={phone} onChange={phoneChange} />
+          <input
+            type="number"
+            value={list.phone}
+            onChange={(e) => phoneChange(e.target.value, "phone")}
+          />
         </div>
       </form>
     </div>
